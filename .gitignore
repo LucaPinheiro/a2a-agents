@@ -1,0 +1,16 @@
+.env
+venv
+.ruff_cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.sqlite3
+*.db
+*.env
+.DS_Store
+.idea/
+.vscode/
+agents/*/agent/__pycache__/
+supervisor/__pycache__/ 

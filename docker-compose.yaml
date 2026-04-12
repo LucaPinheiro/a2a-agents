@@ -1,0 +1,39 @@
+services:
+  supervisor:
+    build:
+      context: ./supervisor
+      dockerfile: Dockerfile
+    container_name: lgbank_supervisor
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./supervisor:/app
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - abrir_conta_agent
+      - cartao_credito_agent
+
+  abrir_conta_agent:
+    container_name: lgbank_abrir_conta_agent
+    build:
+      context: ./agents/abrir_conta
+    volumes:
+      - ./agents/abrir_conta:/app
+    ports:
+      - "8001:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - PORT=8000
+
+  cartao_credito_agent:
+    container_name: lgbank_cartao_credito_agent
+    build:
+      context: ./agents/cartao_credito
+    volumes:
+      - ./agents/cartao_credito:/app
+    ports:
+      - "8002:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - PORT=8000

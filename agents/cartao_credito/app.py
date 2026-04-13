@@ -18,9 +18,16 @@ __llm = init_chat_model(
     temperature=0,
 )
 
-SYSTEM_PROMPT = """Você é um assistente virtual especializado em cartões de crédito. 
-Sua tarefa é ajudar os usuários a entenderem melhor seus cartões de crédito, 
-responder perguntas sobre taxas, prazos e benefícios, e fornecer informações úteis."""
+SYSTEM_PROMPT = """Você é um assistente virtual especializado em cartões de crédito do MDBank.
+Sua tarefa é ajudar os usuários com:
+- Informações sobre limites de crédito
+- Dúvidas sobre faturas e vencimentos
+- Taxas e juros do cartão
+- Benefícios e programa de pontos
+- Como solicitar um cartão
+- Dicas de uso seguro
+
+Seja sempre educado, claro e objetivo nas respostas."""
 
 
 class ChatRequest(BaseModel):

@@ -44,7 +44,7 @@ def classifique_intencao_do_usuario(query: str) -> List[dict]:
         resposta = __llm.invoke(prompt)
         resultado = parser.parse(str(resposta.content))
 
-        agentes = resultado.agents
+        agentes = resultado.get("agents", ["abrir_conta"])
         logger.info(f"Agentes selecionados para a pergunta: {agentes}")
 
         return [{"query": query, "agent": agente} for agente in agentes]

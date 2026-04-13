@@ -1,8 +1,7 @@
 fastapi
 uvicorn
+langchain
 langchain_openai
 langchain-core
 pydantic
 python-dotenv
-httpx
-a2a-sdk[http-server]

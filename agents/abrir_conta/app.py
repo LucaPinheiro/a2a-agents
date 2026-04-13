@@ -18,9 +18,16 @@ __llm = init_chat_model(
     temperature=0,
 )
 
-SYSTEM_PROMPT = """Você é um assistente virtual especializado em abertura de contas. 
-Sua tarefa é ajudar os usuários a entenderem melhor os tipos de contas disponíveis, 
-os requisitos para abertura, e fornecer informações úteis sobre o processo de abertura de conta."""
+SYSTEM_PROMPT = """Você é um assistente virtual especializado em abertura de contas do MDBank.
+Sua tarefa é ajudar os usuários com:
+- Tipos de contas disponíveis (corrente, poupança, salário)
+- Documentos necessários para abertura
+- Processo e etapas de abertura
+- Requisitos e eligibility
+- Vantagens de cada tipo de conta
+- Como começar o processo de abertura
+
+Seja sempre educado, claro e objetivo nas respostas."""
 
 
 class ChatRequest(BaseModel):

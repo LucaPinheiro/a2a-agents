@@ -1,7 +1,10 @@
 fastapi
 uvicorn
 langchain
-langchain_openai
 langchain-core
+langchain_openai
+langchain-community
+langchain-mcp-adapters
+langgraph
 pydantic
 python-dotenv

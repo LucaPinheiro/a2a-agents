@@ -1,0 +1,23 @@
+{
+  "contas": {
+    "46858503862": {
+      "client_id": "46858503862",
+      "nome": "Luca Gomes",
+      "cpf": "46858503862",
+      "numero_conta": "10001",
+      "agencia": "0001",
+      "tipo": "corrente"
+    }
+  },
+  "cartoes": {
+    "46858503862": [
+      {
+        "client_id": "46858503862",
+        "tipo": "standard",
+        "numero_cartao": "****-1001",
+        "limite": 2000.0,
+        "status": "aprovado"
+      }
+    ]
+  }
+}

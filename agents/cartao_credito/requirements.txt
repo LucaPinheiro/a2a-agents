@@ -5,3 +5,6 @@ langchain_openai
 langchain-core
 pydantic
 python-dotenv
+langchain-community
+langchain-mcp-adapters
+langgraph

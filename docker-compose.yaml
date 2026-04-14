@@ -14,6 +14,17 @@ services:
       - abrir_conta_agent
       - cartao_credito_agent
 
+  recursos:
+    container_name: lgbank_recursos
+    build:
+      context: ./resources
+    volumes:
+      - ./resources:/app
+    ports:
+      - "8003:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+
   abrir_conta_agent:
     container_name: lgbank_abrir_conta_agent
     build:
@@ -24,7 +35,10 @@ services:
       - "8001:8000"
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - SMITHERY_API_KEY=${SMITHERY_API_KEY}
       - PORT=8000
+    depends_on:
+      - recursos
 
   cartao_credito_agent:
     container_name: lgbank_cartao_credito_agent
@@ -37,3 +51,20 @@ services:
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - PORT=8000
+    depends_on:
+      - recursos
+
+  frontend-streamlit:
+    container_name: lgbank_frontend_streamlit
+    build:
+      context: ./frontend-streamlit
+    volumes:
+      - ./frontend-streamlit:/app
+    ports:
+      - "8501:8501"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - SUPERVISOR_URL=http://supervisor:8000/chat
+    depends_on:
+      - supervisor
+    restart: unless-stopped
